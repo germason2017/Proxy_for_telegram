@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Прокси для Telegram</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #1a237e, #2979ff);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+      padding: 40px;
+      border-radius: 15px;
+      background: rgba(0, 0, 0, 0.6);
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      animation: fadeInDown 1.5s ease-out;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 40px;
+      opacity: 0;
+      animation: fadeInUp 1.8s ease-out forwards;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 35px;
+      font-size: 1.2rem;
+      color: #fff;
+      background: #2979ff;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(255,255,255,0.2);
+      transform: scaleX(0);
+      transform-origin: left;
+    }
+
+    .btn:hover::before {
+      transform: scaleX(1);
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(41,121,255,0.8);
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Анимация фона */
+    .bg-particle {
+      position: absolute;
+      width: 8px; height: 8px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      animation: float 8s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+      50% { transform: translate(-50%, -50%) scale(1.5); opacity: 0.4; }
+    }
+
+    /* Несколько частиц */
+    .bg-particle:nth-child(1) { top: 10%; left: 20%; animation-delay: 0s; }
+    .bg-particle:nth-child(2) { top: 60%; left: 70%; animation-delay: 2s; }
+    .bg-particle:nth-child(3) { top: 30%; left: 40%; animation-delay: 4s; }
+    .bg-particle:nth-child(4) { top: 80%; left: 10%; animation-delay: 6s; }
+
+    /* Анимация текста */
+    .text-glow {
+      text-shadow:
+        0 0 5px #fff,
+        0 0 10px #2979ff,
+        0 0 20px #2979ff,
+        0 0 40px #2979ff;
+    }
+
+    .text-glow span {
+      animation: glowText 3s infinite alternate;
+    }
+
+    @keyframes glowText {
+      from { text-shadow:
+        0 0 5px #fff,
+        0 0 15px #2979ff,
+        0 0 35px #2979ff,
+        0 0 65px #2979ff; }
+
+      to { text-shadow:
+        0 0 15px #fff,
+        0 0 35px #2979ff,
+        0 0 65px #2979ff,
+        0 0 125px #2979ff; }
+    }
+
+    /* Анимация загрузки (если нужно) */
+    .loader {
+      border: 8px solid #f3f3f3;
+      border-top: 8px solid #2979ff;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        100% { transform: rotate(360deg); }
+    }
+
+</style>
+</head>
+<body>
+
+<div class="bg-particle"></div>
+<div class="bg-particle"></div>
+<div class="bg-particle"></div>
+<div class="bg-particle"></div>
+
+<div class="container">
+
+<h1 class="text-glow">🔐 Прокси для Telegram</h1>
+<p>Нажмите кнопку ниже, чтобы автоматически добавить прокси в Telegram.</p>
+
+<a href="tg://proxy?server=telegram.monkeyvillage.pro&port=443&secret=2f22523a9fdd8fa67e391a31db65b614"
+   class="btn" target="_blank" rel="noopener noreferrer">
+   Перейти в Telegram
+</a>
+
+</div>
+
+<script>
+// Простая анимация появления элементов
+
+document.addEventListener('DOMContentLoaded', function() {
+
+const btn = document.querySelector('.btn');
+
+// Анимация кнопки при клике
+btn.addEventListener('click', function(e) {
+   e.preventDefault();
+   btn.style.transform = 'scale(1.1)';
+   setTimeout(() => { window.location.href = btn.href; }, 300);
+});
+
+});
+</script>
+</body>
+</html>
+#by germason
